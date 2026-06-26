@@ -87,6 +87,7 @@ class DPTransformerEncoder(layers.Layer):
 
         dp_features = self.dp_dense(dp_features)
         dp_features = tf.expand_dims(dp_features, axis=1)
+        dp_features = tf.repeat(dp_features, repeats=tf.shape(out1)[1], axis=1)
         fused = layers.add([dp_features, out1])
         fused = self.fusion_dense(fused)
         fused = layers.concatenate([fused, out1])
@@ -219,6 +220,10 @@ def build_model(
 
     dp_decoder = layers.Dense(embed_dim)(dp_features)
     dp_decoder = layers.Reshape((1, embed_dim))(dp_decoder)
+    dp_decoder = layers.Lambda(
+        lambda x: tf.repeat(x, repeats=forecast_steps, axis=1),
+        name="repeat_dp_decoder_features",
+    )(dp_decoder)
     fused = layers.add([dp_decoder, decoder_outputs])
     fused = layers.Dense(embed_dim)(fused)
     decoder_outputs = layers.Dense(embed_dim)(layers.concatenate([fused, decoder_outputs]))
