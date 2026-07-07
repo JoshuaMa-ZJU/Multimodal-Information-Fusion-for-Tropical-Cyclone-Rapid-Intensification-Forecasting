@@ -1,8 +1,8 @@
-# Knowledge-Guided Multimodal Information Fusion for Tropical Cyclone Rapid Intensification Forecasting
+# Diurnal Pulse-Aware Multimodal Information Fusion for Tropical Cyclone Rapid Intensification Forecasting
 
 This repository provides code and documentation for the paper:
 
-**Knowledge-Guided Multimodal Information Fusion for Tropical Cyclone Rapid Intensification Forecasting**
+**Diurnal Pulse-Aware Multimodal Information Fusion for Tropical Cyclone Rapid Intensification Forecasting**
 
 The proposed model forecasts tropical cyclone (TC) intensity at 6-, 12-, 18-, and 24-hour lead times, with special emphasis on rapid intensification (RI). It integrates infrared satellite imagery, geopotential height fields, sea surface temperature, sea surface salinity, diurnal-pulse features, historical intensity, location, and temporal information.
 
